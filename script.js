@@ -11,10 +11,12 @@ fileInput.addEventListener("change", function() {
     
     var objectURL = URL.createObjectURL(file);
     mediaElement.src = objectURL;
-    
-    playBtn.disabled = false;
-    pauseBtn.disabled = false;
-    stopBtn.disabled = false;
+
+    mediaElement.addEventListener("loadedmetadata", function() {
+        playBtn.disabled = false;
+        pauseBtn.disabled = false;
+        stopBtn.disabled = false;
+    });
 });
 
 playBtn.addEventListener("click", function() {
